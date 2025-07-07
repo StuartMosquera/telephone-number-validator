@@ -3,15 +3,7 @@ const resultsDiv = document.getElementById('results-div');
 const checkBtn = document.getElementById('check-btn');
 const clearBtn = document.getElementById('clear-btn');
 
-const countryCode = '(1\\s?)?';
-const areaCode = '(\\(\\d{3}\\)|\\d{3})';
-const space = '[\\s\\-]?';
-const telephonePrefix = '\\d{3}';
-const lineNumber = '\\d{4}';
-
-const PHONE_REGEX = new RegExp(
-  `^${countryCode}${areaCode}${space}${telephonePrefix}${space}${lineNumber}$`
-);
+const PHONE_REGEX = createPhoneRegex();
 
 function checkValue(value) {
   if (!value) {
@@ -37,6 +29,18 @@ function displayResult(message) {
   }
 
   resultsDiv.appendChild(pTag);
+}
+
+function createPhoneRegex() {
+  const countryCode = '(1\\s?)?';
+  const areaCode = '(\\(\\d{3}\\)|\\d{3})';
+  const space = '[\\s\\-]?';
+  const telephonePrefix = '\\d{3}';
+  const lineNumber = '\\d{4}';
+
+  return new RegExp(
+    `^${countryCode}${areaCode}${space}${telephonePrefix}${space}${lineNumber}$`
+  );
 }
 
 const clearValues = () => resultsDiv.innerHTML = '';
