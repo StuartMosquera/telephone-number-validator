@@ -1,10 +1,13 @@
+// DOM Variables
 const userInput = document.getElementById('user-input');
 const resultsDiv = document.getElementById('results-div');
 const checkBtn = document.getElementById('check-btn');
 const clearBtn = document.getElementById('clear-btn');
 
+// Global Constants
 const PHONE_REGEX = createPhoneRegex();
 
+// Main Function
 function checkValue(value) {
   if (!value) {
     alert('Please provide a phone number');
@@ -20,6 +23,7 @@ function checkValue(value) {
   userInput.value = '';
 };
 
+// Helper Functions
 function displayResult(message) {
   const pTag = document.createElement('p');
   pTag.textContent = message;
@@ -45,6 +49,7 @@ function createPhoneRegex() {
 
 const clearValues = () => resultsDiv.innerHTML = '';
 
+// Input Events
 checkBtn.onclick = () => checkValue(userInput.value);
 
 clearBtn.onclick = () => clearValues();
